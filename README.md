@@ -1,7 +1,7 @@
 # Smart_Car
 Controling a car robot via a web interface using Python Flask.
 The car robot has some functions such as voice commands using Google Assistant, real-time livestream and object following using OpenCV3.
-
+![alt text](https://user-images.githubusercontent.com/33945101/58755919-a4ca8f80-84bb-11e9-99c9-5a65c39c5008.jpg)
 # Installing OpenCV3
 1. Install dependencies
 ```
