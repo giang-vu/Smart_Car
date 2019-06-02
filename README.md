@@ -5,6 +5,7 @@ The car robot has some functions such as voice commands using Google Assistant, 
 # Installing OpenCV3
 1. Install dependencies
 ```
+cd ~
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y build-essential cmake pkg-config
 sudo apt-get install -y libjpeg-dev libtiff5-dev libjasper-dev libpng12-dev
@@ -13,8 +14,12 @@ sudo apt-get install -y libxvidcore-dev libx264-dev
 sudo apt-get install -y libgtk2.0-dev libgtk-3-dev
 sudo apt-get install -y libatlas-base-dev gfortran
 sudo apt-get install -y python2.7-dev python3-dev
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+sudo python3 get-pip.py
+pip install numpy
 ```
-3. Download the OpenCV source code
+2. Download the OpenCV source code
 ```
 cd ~
 wget -O opencv.zip https://github.com/Itseez/opencv/archive/3.3.0.zip
@@ -22,14 +27,7 @@ unzip opencv.zip
 wget -O opencv_contrib.zip https://github.com/Itseez/opencv_contrib/archive/3.3.0.zip
 unzip opencv_contrib.zip
 ```
-4. Install pip and NumPy on your Raspberry Pi
-```
-wget https://bootstrap.pypa.io/get-pip.py
-sudo python get-pip.py
-sudo python3 get-pip.py
-pip install numpy
-```
-5. Install OpenCV
+3. Build OpenCV3
 ```
 cd ~/opencv-3.3.0/
 mkdir build
@@ -43,6 +41,18 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D ENABLE_VFPV3=ON \
 -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.3.0/modules \
 -D BUILD_EXAMPLES=ON ..
+```
+4. Increase swap space size then compiling
+```
+sudo sed -i 's/CONF_SWAPSIZE=100/CONF_SWAPSIZE=1024/g' /etc/dphys-swapfile
+sudo /etc/init.d/dphys-swapfile stop
+sudo /etc/init.d/dphys-swapfile start
+make -j4
+```
+5. Install OpenCV3
+```
+sudo make install
+sudo ldconfig
 ```
 Reference:
 https://www.pyimagesearch.com/2017/09/04/raspbian-stretch-install-opencv-3-python-on-your-raspberry-pi/
