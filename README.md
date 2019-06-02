@@ -44,6 +44,6 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib-3.3.0/modules \
 -D BUILD_EXAMPLES=ON ..
 ```
-Reference: 
+Reference:
 https://www.pyimagesearch.com/2017/09/04/raspbian-stretch-install-opencv-3-python-on-your-raspberry-pi/
 Fix CMake error: https://stackoverflow.com/questions/49437948/getting-cmake-error-with-protobuf-library-in-the-configuration-of-opencv-in-rasp
