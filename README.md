@@ -54,6 +54,19 @@ make -j4
 sudo make install
 sudo ldconfig
 ```
+7. Test OpenCV3 and wrap up
+```
+python3
+>>> import cv2
+>>> cv2.__version__
+'3.3.0'
+sudo mv /usr/local/lib/python3.5/site-packages/cv2.cpython-35m-arm-linux-gnueabihf.so /usr/local/lib/python3.5/site-packages/cv2.so
+cd ~
+rm -rf opencv-3.3.0 opencv_contrib-3.3.0
+sudo sed -i 's/CONF_SWAPSIZE=1024/CONF_SWAPSIZE=100/g' /etc/dphys-swapfile
+sudo /etc/init.d/dphys-swapfile stop
+sudo /etc/init.d/dphys-swapfile start
+```
 Reference:
 https://www.pyimagesearch.com/2017/09/04/raspbian-stretch-install-opencv-3-python-on-your-raspberry-pi/
 Fix CMake error: https://stackoverflow.com/questions/49437948/getting-cmake-error-with-protobuf-library-in-the-configuration-of-opencv-in-rasp
